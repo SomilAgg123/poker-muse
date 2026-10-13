@@ -9,7 +9,7 @@
 ![AI rival included](https://img.shields.io/badge/AI_rival-VEX-e67e22)
 ![original game](https://img.shields.io/badge/100%25_original_game-f1c40f)
 
-<img src="assets/gameplay.jpg" width="850" alt="Flux Poker gameplay — placing cards on the grid while VEX builds in secret">
+<!-- <img src="assets/gameplay.jpg" width="850" alt="Flux Poker gameplay — placing cards on the grid while VEX builds in secret"> -->
 
 **The poker you can learn in a minute and finish in five.**
 No hands to fold. No chips to count mid-hand. Every single card matters.
