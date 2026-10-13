@@ -1,38 +1,72 @@
-# ♠ FLUX POKER
+<div align="center">
 
-**Twenty-five cards. Ten hands. Two swaps. One rival.**
+# ♠️ ♥️ FLUX POKER ♦️ ♣️
 
-An original poker variation built as a self-contained browser game — no build
-step, no dependencies, no backend. Open `index.html` (or serve the folder
-statically) and play.
+### *Twenty-five cards. Ten hands. Two swaps. One rival.*
 
-## How it plays
+![playable in browser](https://img.shields.io/badge/playable_in_browser-2ecc71)
+![no build step](https://img.shields.io/badge/no_build_step-3498db)
+![AI rival included](https://img.shields.io/badge/AI_rival-VEX-e67e22)
+![original game](https://img.shields.io/badge/100%25_original_game-f1c40f)
 
-1. A shuffled 52-card deck is shared by you and your AI rival, **VEX**.
-2. Cards are dealt **one at a time**. Click an empty cell to place each card on
-   your 5×5 grid; VEX places its own cards in secret.
-3. When all 25 cards are placed, every **row and column scores as a 5-card
-   poker hand** — 10 hands per grid. Highest grid total wins the round's pot.
-4. **⚡ Flux (the twist):** twice per round, swap any two cards already on your
-   grid. Early mistakes are recoverable; late swaps complete monsters.
-5. **Betting street (the poker soul):** after your 13th card, one betting round
-   opens. VEX's grid is hidden — read its bets like a tell. Check / Bet 10,
-   then Call / Fold. No re-raises; fast and readable.
-6. **Match:** 3 rounds, 100 chips each, 10-chip antes. Most chips wins.
+<img src="assets/gameplay.jpg" width="850" alt="Flux Poker gameplay — placing cards on the grid while VEX builds in secret">
 
-### Scoring (per row / column)
+**The poker you can learn in a minute and finish in five.**
+No hands to fold. No chips to count mid-hand. Every single card matters.
 
-| Hand | Pts | | Hand | Pts |
-|---|---|---|---|---|
-| Royal flush | 100 | | Straight | 15 |
-| Straight flush | 75 | | Three of a kind | 10 |
-| Four of a kind | 50 | | Two pair | 5 |
-| Full house | 25 | | Pair | 2 |
-| Flush | 20 | | High card | 0 |
+</div>
 
-Ties break on best single hand, then split pot.
+---
 
-## Run it
+## 🃏 The game in 30 seconds
+
+1. **You're dealt cards one at a time** — click an empty cell to place each one on your 5×5 grid.
+2. **VEX, your AI rival, builds in secret** on the grid beside you. You can't see its cards — only its bets.
+3. **When the grid fills, all 5 rows + 5 columns score as poker hands.** Ten hands. Highest total takes the pot.
+4. **One betting street** opens at the halfway mark. Read VEX's bets like a tell: check, bet, call, or fold.
+
+## ⚡ The Flux twist
+
+Twice per round, you may **swap any two cards already on your grid**.
+
+Placed a king where an ace should be? Building a flush that's one card short? Flux it. Early mistakes are recoverable, late swaps complete monsters — and VEX gets two swaps too, played optimally. This is the heart of the game.
+
+## 🎰 Scoring
+
+Every row and every column is scored as a 5-card poker hand:
+
+| Hand | Pts | Hand | Pts |
+|---|---|---|---|
+| Royal flush | 100 | Straight | 15 |
+| Straight flush | 75 | Three of a kind | 10 |
+| Four of a kind | 50 | Two pair | 5 |
+| Full house | 25 | Pair | 2 |
+| Flush | 20 | High card | 0 |
+
+```
+┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐
+│ A ♠ │ │ K ♠ │ │ Q ♠ │ │ J ♠ │ │10 ♠ │
+└─────┘ └─────┘ └─────┘ └─────┘ └─────┘
+          ROYAL FLUSH — 100 PTS. Good luck.
+```
+
+Ties break on the best single hand, then the pot splits.
+
+## 🤖 Meet VEX
+
+- **Places greedily** — evaluates every empty cell by the potential of its row + column (pairs forming, flush draws, straight draws), with a little jitter so no two games feel the same.
+- **Fluxes optimally** — hill-climbs every possible swap at round end. It averages ~+49 pts from swaps alone, which is why *your* two tokens matter so much.
+- **Bets like it means it** — projects its hidden score, opens when strong, folds when weak… with the occasional bluff and hero call to keep you honest.
+
+<div align="center">
+<img src="assets/results.jpg" width="850" alt="Round results — every row and column scored, best hands highlighted">
+<br>
+<em>Round results: all ten hands scored, best hands highlighted, totals counted up.</em>
+</div>
+
+## 🎮 Play it
+
+A match is 3 rounds, 100 chips each, 10-chip antes. Most chips at the end wins. Bust out and it's over early.
 
 ```bash
 # any static server, e.g.
@@ -40,50 +74,28 @@ python3 -m http.server 8000
 # then open http://localhost:8000/
 ```
 
-Or just double-click `index.html` — everything runs from `file://` too.
+Or just double-click `index.html` — it runs from `file://` too. Pure static site: drop the folder on GitHub Pages, Netlify, or Vercel and it's live. No build, no backend, no dependencies.
 
-## Project layout
+## 🛠️ Under the hood
 
-```
-index.html        page shell + modals (how-to, betting, scores, match end)
-css/style.css     casino-felt theme, cards, animations, responsive layout
-js/poker.js       pure poker engine: deck, 5-card evaluator, grid scoring
-js/ai.js          VEX rival AI: greedy placement, flux hill-climbing, betting
-js/audio.js       tiny WebAudio synth (no audio assets)
-js/game.js        game state machine + DOM wiring
-test/             node tests: evaluator.test.js, sim.js (AI calibration)
-DESIGN.md         full design document
-```
-
-## Tests
+| File | What it does |
+|---|---|
+| `index.html` | Page shell + modals (how-to, betting, scores, match end) |
+| `css/style.css` | Casino-felt theme, cards, animations, responsive layout |
+| `js/poker.js` | Pure poker engine: deck, 5-card evaluator, grid scoring |
+| `js/ai.js` | VEX: greedy placement, flux hill-climbing, betting brain |
+| `js/audio.js` | Tiny WebAudio synth — zero audio assets |
+| `js/game.js` | Game state machine + DOM wiring |
+| `test/` | `evaluator.test.js` (36 assertions, all passing) + `sim.js` (AI calibration) |
+| `DESIGN.md` | Full design document — the why behind every rule |
 
 ```bash
-node test/evaluator.test.js   # 36 assertions over hand rankings, tiebreaks, scoring
-node test/sim.js              # AI-vs-random simulation used to calibrate VEX
+node test/evaluator.test.js   # hand rankings, tiebreaks, grid scoring
+node test/sim.js              # VEX vs random: 99.8% win rate, avg ~76 pts
 ```
 
-## VEX (rival AI) — how it thinks
+<div align="center">
 
-- **Placement:** greedy — for each empty cell it scores a *potential* heuristic
-  over the affected row + column (made pairs/trips, flush-draw and
-  straight-draw progress, high-card value) and takes the best cell, with a
-  little jitter so games don't feel identical. Beats random placement 99.8% of
-  the time (avg grid ~76 pts vs ~15).
-- **Flux:** at round end it hill-climbs — tries every cell pair, keeps the best
-  improving swap, up to 2 swaps (avg gain ~+49 pts, which is why *your* flux
-  tokens matter so much).
-- **Betting:** projects its final score from partial-grid potentials; opens
-  when strong, calls/folds against your bets, with occasional bluffs and hero
-  calls to stay human.
+**Built as an original poker variation — no Texas Hold'em was harmed in the making of this game.** ♠️
 
-## Design bets
-
-- **Every card matters immediately** — no folding 80% of hands; you're always building.
-- **Hidden information with a face** — VEX's grid is secret, but its betting tells you something.
-- **Comeback mechanic** — flux swaps mean a bad start isn't death.
-- **Short sessions** — a 3-round match takes ~5 minutes.
-
-## Deployment
-
-Static site — copy the folder to any host (GitHub Pages, Netlify, Vercel, S3…).
-No server code, no environment variables.
+</div>
