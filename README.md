@@ -9,7 +9,20 @@
 ![AI rival included](https://img.shields.io/badge/AI_rival-VEX-e67e22)
 ![original game](https://img.shields.io/badge/100%25_original_game-f1c40f)
 
-<!-- <img src="assets/gameplay.jpg" width="850" alt="Flux Poker gameplay — placing cards on the grid while VEX builds in secret"> -->
+```
+              YOU  — every card visible                VEX — grid hidden
+┌────┬────┬────┬────┬────┐                  ┌────┬────┬────┬────┬────┐
+│ Q♥ │    │ 9♥ │    │ 6♥ │                  │ ░░ │ ░░ │    │    │    │
+├────┼────┼────┼────┼────┤                  ├────┼────┼────┼────┼────┤
+│    │ 3♠ │    │ J♣ │    │                  │ ░░ │ ░░ │    │    │    │
+├────┼────┼────┼────┼────┤                  ├────┼────┼────┼────┼────┤
+│ A♣ │    │ 7♦ │    │ 3♥ │                  │ ░░ │ ░░ │    │    │    │
+├────┼────┼────┼────┼────┤                  ├────┼────┼────┼────┼────┤
+│    │ 3♣ │    │10♣ │    │                  │ ░░ │ ░░ │ ░░ │ ░░ │    │
+├────┼────┼────┼────┼────┤                  ├────┼────┼────┼────┼────┤
+│ 2♠ │    │    │    │ A♥ │                  │ ░░ │ ░░ │    │    │    │
+└────┴────┴────┴────┴────┘                  └────┴────┴────┴────┴────┘
+```
 
 **The poker you can learn in a minute and finish in five.**
 No hands to fold. No chips to count mid-hand. Every single card matters.
@@ -57,12 +70,6 @@ Ties break on the best single hand, then the pot splits.
 - **Places greedily** — evaluates every empty cell by the potential of its row + column (pairs forming, flush draws, straight draws), with a little jitter so no two games feel the same.
 - **Fluxes optimally** — hill-climbs every possible swap at round end. It averages ~+49 pts from swaps alone, which is why *your* two tokens matter so much.
 - **Bets like it means it** — projects its hidden score, opens when strong, folds when weak… with the occasional bluff and hero call to keep you honest.
-
-<div align="center">
-<img src="assets/results.jpg" width="850" alt="Round results — every row and column scored, best hands highlighted">
-<br>
-<em>Round results: all ten hands scored, best hands highlighted, totals counted up.</em>
-</div>
 
 ## 🎮 Play it
 
